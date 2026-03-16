@@ -1,0 +1,49 @@
+.body{
+    Font-family: Arial;
+    Background-color: #f2f2f2;
+    Text-align: center;
+}
+
+/* TITULO */
+.titulo{
+   text-align: center; 
+  margin-top: 20px; 
+  Top:50%;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.contenedor{
+    Display: flex;
+    Justify-content: center;
+    Gap: 40px;
+}
+
+/* TARJETAS */
+.tarjeta{
+    Background: white;
+    Border: 2px solid gray;
+    Width: 200px;
+    Padding: 20px;
+}
+
+/* IMAGEN */
+.tarjeta img{
+    Width: 150px;
+    Height: 150px;
+    Border-radius: 20px;
+}
+
+/* BOTON */
+.boton{
+    Display: inline-block;
+    Margin-top: 10px;
+    Padding: 8px 15px;
+    Background-color: #1c6b82;
+    Color: white;
+    Text-decoration: none;
+    Border-radius: 5px;
+}
+
+.boton:hover{
+    Background-color: #0f4c5c;
+}
