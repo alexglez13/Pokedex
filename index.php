@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <?php
+<?php
 include 'include/conect.php';
 
 ?>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <title>POKEDEX</title>
 <link rel="stylesheet" href="assets/css/estilo.css">
