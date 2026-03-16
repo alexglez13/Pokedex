@@ -1,49 +1,77 @@
-.body{
-    Font-family: Arial;
-    Background-color: #f2f2f2;
-    Text-align: center;
+/* Estilo general */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#ff4e50,#f9d423);
+    margin:0;
+    padding:20px;
 }
 
-/* TITULO */
+/* Titulo */
 .titulo{
-   text-align: center; 
-  margin-top: 20px; 
-  Top:50%;
+    text-align:center;
+    color:white;
+    font-size:40px;
+    margin-bottom:30px;
+    text-shadow:2px 2px 5px rgba(0,0,0,0.3);
 }
 
-/* CONTENEDOR DE TARJETAS */
+/* Contenedor de tarjetas */
 .contenedor{
-    Display: flex;
-    Justify-content: center;
-    Gap: 40px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
 }
 
-/* TARJETAS */
+/* Tarjeta */
 .tarjeta{
-    Background: white;
-    Border: 2px solid gray;
-    Width: 200px;
-    Padding: 20px;
+    background:white;
+    width:220px;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* IMAGEN */
-.tarjeta img{
-    Width: 150px;
-    Height: 150px;
-    Border-radius: 20px;
+/* Animación al pasar el mouse */
+.tarjeta:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
 }
 
-/* BOTON */
-.boton{
-    Display: inline-block;
-    Margin-top: 10px;
-    Padding: 8px 15px;
-    Background-color: #1c6b82;
-    Color: white;
-    Text-decoration: none;
-    Border-radius: 5px;
+/* Nombre del pokemon */
+.pokemon h3{
+    margin:10px 0;
+    font-size:22px;
+    color:#333;
 }
 
-.boton:hover{
-    Background-color: #0f4c5c;
+/* Imagen */
+.pokemon img{
+    width:140px;
+    height:auto;
+    margin:10px 0;
+}
+
+/* Descripción */
+.pokemon p{
+    font-size:14px;
+    color:#666;
+    margin-bottom:15px;
+}
+
+/* Botón */
+.tarjeta button{
+    background:#ff4e50;
+    border:none;
+    color:white;
+    padding:8px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+
+.tarjeta button:hover{
+    background:#d43c3f;
 }
