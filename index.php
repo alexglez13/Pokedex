@@ -19,7 +19,7 @@ include 'include/conect.php';
 <ul>
 <li><a href="#">Inicio</a></li>
 <li>
-<a href="#">Conoce más</a>
+<a href="prueba.php">Conoce más</a>
 <ul>
 <li>
 <a href="#">Tipos</a>
@@ -39,7 +39,7 @@ include 'include/conect.php';
 
 <h1>Bienvenidos al mundo POKÉMON</h1>
 <p>Podras conocer mas sobre de tus personajes favoritos</p>
-<a href="fuego.php" class="btn btn-sm btn-primary">COMIENZA</a>
+<a href="todos.php" class="btn btn-sm btn-primary">COMIENZA</a>
 <?php
 echo $alerta;
 ?>
