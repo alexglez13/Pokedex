@@ -1,76 +1,16 @@
-/* imagen */
-Body{
-Margin:0;
-Font-family:Arial;
-background-image: url(../img/pokemon.jpg);
-Background-size:cover;
-Background-position:center;
-Height:100vh;
+.bg-pokedex{
+background-image: url('../img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp');
+background-size: cover;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
 }
 
-/* menu */
-.menu ul{
-List-style:none;
-Margin:0;
-Padding:0;
-Background:#e2e1b6;
+.card-hover{
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu ul li{
-Position:relative;
-Display:inline-block;
+.card-hover:hover{
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
-
-.menu ul li a{
-Display:block;
-Padding:15px 20px;
-Color:rgb(0, 0, 0);
-Text-decoration:none;
-}
-
-/* hover */
-.menu ul li a:hover{
-Background:#e2e1b6;
-}
-
-/* menu secundario */
-.menu ul li ul{
-Display:none;
-Position:absolute;
-Background:#333;
-}
-
-/* 3er menu */
-.menu ul li:hover > ul{
-Display:block;
-}
-
-/* 3er menu */
-.menu ul li ul li{
-Display:block;
-}
-
-/* 3er menu */
-.menu ul li ul li ul{
-Left:100%;
-Top:0;
-}
-
-/* titulo */
-.contenido{
-Text-align:center;
-Color:rgb(0, 0, 0);
-Position:absolute;
-Top:50%;
-Left:50%;
-Transform:translate(-50%, -50%);
-}
-
-H1{
-Font-size:50px;
-}
-
-P{
-Font-size:20px;
-}
-
