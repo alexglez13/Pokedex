@@ -8,9 +8,26 @@ Este proyecto fue desarrollado como parte de la materia Programación II. Consis
 </p>
 
 <h2 align="center">Agradecimientos :3</h2>
-<p align="center">
-        <li align="center">Alexis Gonzalez Velazquez</li>
-        <li align="center">Liliana </li>
-        <li align="center">Edson Quintana Ibañez</li>
-        <li align="center">Jose Luis Chavez Gomez</li>
-</p>
+<style>
+    .contenedor {
+        text-align: center;
+    }
+    ul {
+        list-style-position: inside; /* acerca los puntos al texto */
+        padding: 0; /* elimina espacio izquierdo */
+        display: inline-block; /* permite centrar la lista */
+        text-align: left; /* alinea bien el contenido */
+    }
+</style>
+<body>
+
+<div class="contenedor">
+    <ul>
+        <li>Alexis Gonzalez Velazquez</li>
+        <li>Liliana</li>
+        <li>Edson Aldahir Quintana Ibañez</li>
+        <li>Jose Luis Chavez Gomez</li>
+    </ul>
+</div>
+
+</body>
