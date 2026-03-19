@@ -8,20 +8,8 @@ Este proyecto fue desarrollado como parte de la materia Programación II. Consis
 </p>
 
 <h2 align="center">Agradecimientos :3</h2>
-<style>
-    .contenedor {
-        text-align: center;
-    }
-    ul {
-        list-style-position: inside; /* acerca los puntos al texto */
-        padding: 0; /* elimina espacio izquierdo */
-        display: inline-block; /* permite centrar la lista */
-        text-align: left; /* alinea bien el contenido */
-    }
-</style>
-<body>
 
-<div class="contenedor">
+<div>
     <ul>
         <li>Alexis Gonzalez Velazquez</li>
         <li>Liliana</li>
