@@ -1,54 +1,24 @@
-<nav class="menu">
-<ul>
-    <li><a href="tipos.php">Inicio</a></li>
-    <li><a href="prueba.php">Registra</a></li>
-    <li><a href="control.php">Control</a></li>
-</ul>
-</nav>
+<!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">POKEDEX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
 
-<!-- inicio de estilo -->
- <style>
-/* CONTENEDOR DEL MENU */
-.menu{
-    background: linear-gradient(90deg, #f7dc6f, #f4d03f);
-    padding: 10px 0;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
-
-/* LISTA */
-.menu ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* centra el menú */
-}
-
-/* ITEMS */
-.menu ul li{
-    margin: 0 15px;
-}
-
-/* LINKS */
-.menu ul li a{
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-/* HOVER BONITO */
-.menu ul li a:hover{
-    background-color: #fff3b0;
-    color: #333;
-    transform: scale(1.05);
-}
-
-/* ACTIVO (opcional) */
-.menu ul li a.active{
-    background-color: #ffffff;
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
-}
-</style>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="prueba.php">Registrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="control.php">Control</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--Termina el sidebdar-->

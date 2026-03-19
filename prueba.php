@@ -145,6 +145,7 @@ VALUES
                                     <option value="1">Planta</option>
                                     <option value="2">Fuego</option>
                                     <option value="3">Agua</option>
+                                    <option value="4">Roca</option>
                                 </select>
                             </div>
                             <div class="col">

@@ -1,36 +1,33 @@
 <?php
 include 'include/conect.php';
-include 'include/querys.php';
-if (isset($_GET['id_poke'])) {
-    $Id = intval($_GET['id_poke']);
-} else {
-    die("ID no proporcionado");
-}
+
+$Id = intval($_GET['id_poke']);
 
 $editar = "SELECT * FROM pokemon WHERE id_poke = $Id";
 $editare = $conexion->query($editar);
 $row = $editare->fetch_assoc();
 $Mensaje = "";
 // Obetener los datos
-if (isset($_POST['BtnActualizar'])) {
+if(isset($_POST['BtnActualizar'])){
 
-    $identifica = $_POST['id_poke'];
-    $npoke = $conexion->real_escape_string($_POST['npoke']);
-    $id_tpoke = $conexion->real_escape_string($_POST['id_tpoke']);
-    $id_sexo = $conexion->real_escape_string($_POST['id_sexo']);
-    $descripcion = $conexion->real_escape_string($_POST['descripcion']);
-    $id_region = $conexion->real_escape_string($_POST['id_region']);
-    $peso = $conexion->real_escape_string($_POST['peso']);
-    $altura = $conexion->real_escape_string($_POST['altura']);
-    $legendario = $conexion->real_escape_string($_POST['legendario']);
-    // actualizar
-    if ($npoke == "") {
-        $Mensaje .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+$identifica = $_POST['id_poke'];
+$npoke = $conexion->real_escape_string($_POST['npoke']);
+$id_tpoke = $conexion->real_escape_string($_POST['id_tpoke']);
+$id_sexo = $conexion->real_escape_string($_POST['id_sexo']);
+$descripcion = $conexion->real_escape_string($_POST['descripcion']);
+$id_region = $conexion->real_escape_string($_POST['id_region']);
+$peso = $conexion->real_escape_string($_POST['peso']);
+$altura = $conexion->real_escape_string($_POST['altura']);
+$legendario = $conexion->real_escape_string($_POST['legendario']);
+// actualizar
+if($npoke == ""){
+    $Mensaje.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
 <strong>El nombre el obligatorio</strong>.
 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 </div>";
-    } else {
-        $update = "UPDATE pokemon SET 
+}
+else{
+$update = "UPDATE pokemon SET 
 npoke='$npoke',
 id_tpoke='$id_tpoke',
 id_sexo='$id_sexo',
@@ -40,163 +37,137 @@ peso='$peso',
 altura='$altura',
 legendario='$legendario'
 WHERE id_poke='$identifica'";
-        $updatex = $conexion->query($update);
-        if ($updatex) {
-            header("Location: control.php?actualizacion=exitosa");
-            exit();
-        } else {
-            echo "<div class='container mt-3'>
+$updatex = $conexion->query($update);
+if($updatex){
+        header("Location: control.php?actualizacion=exitosa");
+        exit();
+}
+else {
+    echo "<div class='container mt-3'>
             <div class='alert alert-danger alert-dismissible fade show' role='alert'>
             <strong>Error al actualizar.</strong> Intentalo mas tarde.
             <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
             </div>
           </div>";
 
-            echo "<script>
+    echo "<script>
             if(window.history.replaceState){
                 window.history.replaceState(null, null, window.location.pathname);
             }
           </script>";
-        }
-    }
-    if (!$Id) {
-        die("ID no válido");
-    }
+}
+}
+if(!$Id){
+    die("ID no válido");
+}
 }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Pokémon</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Pokémon</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-    <style>
-        body {
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
-        }
-
-        .card {
-            border-radius: 20px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+<style>
+body{
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+}
+.card{
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+}
+</style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">POKEDEX</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
+    <!--Inicia el sidebar-->
+<?php include 'vistas/sidebar.php';?>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="prueba.php">Registrar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="control.php">Control</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div class="container mt-5">
 
-    <div class="container mt-5">
+<?php echo $Mensaje; ?>
 
-        <?php echo $Mensaje; ?>
+<div class="row justify-content-center">
+<div class="col-md-8">
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+<div class="card p-4">
 
-                <div class="card p-4">
+<div class="text-center">
+<h2 class="mt-2">Editar Pokémon</h2>
+<p>Modifica los datos del Pokémon</p>
+</div>
 
-                    <div class="text-center">
-                        <h2 class="mt-2">Editar Pokémon</h2>
-                        <p>Modifica los datos del Pokémon</p>
-                    </div>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<input type="hidden" name="id_poke" value="<?php echo $row['id_poke']; ?>">
 
-                        <input type="hidden" name="id_poke" value="<?php echo $row['id_poke']; ?>">
+<div class="row mt-3">
+<div class="col">
+<input type="text" name="npoke" class="form-control"
+value="<?php echo $row['npoke']; ?>" placeholder="Nombre del Pokémon">
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <input type="text" name="npoke" class="form-control"
-                                    value="<?php echo $row['npoke']; ?>" placeholder="Nombre del Pokémon">
-                            </div>
-                        </div>
+<div class="row mt-3">
+<div class="col">
+<input type="text" name="id_tpoke" class="form-control"
+value="<?php echo $row['id_tpoke']; ?>" placeholder="Tipo de Pokémon">
+</div>
+<div class="col">
+<input type="text" name="id_sexo" class="form-control"
+value="<?php echo $row['id_sexo']; ?>" placeholder="Sexo">
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <input type="text" name="id_tpoke" class="form-control"
-                                    value="<?php echo $row['id_tpoke']; ?>" placeholder="Tipo de Pokémon">
-                            </div>
-                            <div class="col">
-                                <input type="text" name="id_sexo" class="form-control"
-                                    value="<?php echo $row['id_sexo']; ?>" placeholder="Sexo">
-                            </div>
-                        </div>
+<div class="row mt-3">
+<div class="col">
+<textarea name="descripcion" class="form-control" placeholder="Descripción"><?php echo $row['descripcion']; ?></textarea>
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <textarea name="descripcion" class="form-control"
-                                    placeholder="Descripción"><?php echo $row['descripcion']; ?></textarea>
-                            </div>
-                        </div>
+<div class="row mt-3">
+<div class="col">
+<input type="text" name="id_region" class="form-control"
+value="<?php echo $row['id_region']; ?>" placeholder="Región">
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <input type="text" name="id_region" class="form-control"
-                                    value="<?php echo $row['id_region']; ?>" placeholder="Región">
-                            </div>
-                        </div>
+<div class="row mt-3">
+<div class="col">
+<input type="text" name="peso" class="form-control"
+value="<?php echo $row['peso']; ?>" placeholder="Peso">
+</div>
+<div class="col">
+<input type="text" name="altura" class="form-control"
+value="<?php echo $row['altura']; ?>" placeholder="Altura">
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <input type="text" name="peso" class="form-control" value="<?php echo $row['peso']; ?>"
-                                    placeholder="Peso">
-                            </div>
-                            <div class="col">
-                                <input type="text" name="altura" class="form-control"
-                                    value="<?php echo $row['altura']; ?>" placeholder="Altura">
-                            </div>
-                        </div>
+<div class="row mt-3">
+<div class="col">
+<select name="legendario" class="form-control">
+<option value="">¿Es legendario?</option>
+<option value="1" <?php if($row['legendario']==1) echo "selected"; ?>>Sí</option>
+<option value="0" <?php if($row['legendario']==0) echo "selected"; ?>>No</option>
+</select>
+</div>
+</div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <select name="legendario" class="form-control">
-                                    <option value="">¿Es legendario?</option>
-                                    <option value="1" <?php if ($row['legendario'] == 1)
-                                        echo "selected"; ?>>Sí</option>
-                                    <option value="0" <?php if ($row['legendario'] == 0)
-                                        echo "selected"; ?>>No</option>
-                                </select>
-                            </div>
-                        </div>
+<div class="row mt-3">
+<input type="submit" value="Actualizar" name="BtnActualizar" class="btn btn-warning">
+</div>
 
-                        <div class="row mt-3">
-                            <input type="submit" value="Actualizar" name="BtnActualizar" class="btn btn-warning">
-                        </div>
+</form>
 
-                    </form>
+</div>
+</div>
+</div>
+</div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
-
 </html>
