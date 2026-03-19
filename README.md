@@ -12,7 +12,7 @@ Este proyecto fue desarrollado como parte de la materia Programación II. Consis
 <div>
     <ul>
         <li>Alexis Gonzalez Velazquez</li>
-        <li>Liliana</li>
+        <li>Liliana Fraymar Prospero Rivas</li>
         <li>Edson Aldahir Quintana Ibañez</li>
         <li>Jose Luis Chavez Gomez</li>
     </ul>
