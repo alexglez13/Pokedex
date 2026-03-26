@@ -85,7 +85,7 @@ body{
 
 <body>
     <!--Inicia el sidebar-->
-<?php include 'vistas/sidebar.php';?>
+<!-- include 'vistas/sidebar.php -->
 
 <div class="container mt-5">
 
