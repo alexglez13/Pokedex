@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
+    header('Location: index.php');
+    exit;
+}
+?>
+<?php
 include 'include/conect.php';
 include 'include/querys.php';
 if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {

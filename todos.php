@@ -103,7 +103,7 @@ $resultado = $conexion->query($consulta);
                         $fondoTipo = "shadow bg-light border-5 border-success text-dark";
                         break;
                     default:
-                        $fondoTipo = "bg-light border-5 border-primary text-dark";
+                        $fondoTipo = "bg-light border-5 border-secondary text-dark";
                 }
                 ?>
                 <div class="col-12 col-md-6 col-lg-4">

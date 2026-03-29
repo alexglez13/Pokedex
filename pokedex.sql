@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2026 a las 18:13:22
+-- Tiempo de generación: 29-03-2026 a las 15:24:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,7 +43,20 @@ INSERT INTO `habilidad` (`id_habilidad`, `nhabilidad`) VALUES
 (4, 'Surf'),
 (5, 'Erupcion'),
 (6, 'Hojas navaja'),
-(7, 'Cascada');
+(7, 'Cascada'),
+(8, 'Garra Metal'),
+(9, 'Buceo'),
+(10, 'Picadura'),
+(11, 'Danza Dragon'),
+(12, 'Alto Voltaje'),
+(13, 'Maldicion'),
+(14, 'Encanto'),
+(15, 'Colmillo Hielo'),
+(16, 'Demolicion'),
+(17, 'Agarre'),
+(18, 'Hipnosis'),
+(19, 'Avalancha'),
+(20, 'Gancho de Julio Cesar Chavez');
 
 -- --------------------------------------------------------
 
@@ -69,7 +82,7 @@ CREATE TABLE `pokemon` (
 --
 
 INSERT INTO `pokemon` (`id_poke`, `npoke`, `id_tpoke`, `id_sexo`, `descripcion`, `id_region`, `peso`, `altura`, `legendario`, `imagen`) VALUES
-(1, 'Bulbasaur', 1, 1, 'Bulbasaur es un Pokémon cuadrúpedo de color verde cubierto de manchas geométricas de tonos oscuros. Su cabeza representa cerca de un tercio de su cuerpo. En su frente, se ubican tres manchas cuya forma varía dependiendo del ejemplar.', 1, 6.90, 0.70, 0, 'Bulbasaur.webp'),
+(1, 'Bulbasaur', 1, 1, 'Bulbasaur es un Pokémon cuadrúpedo de color verde cubierto de manchas geométricas de tonos oscuros. Su cabeza representa cerca de un tercio de su cuerpo. En su frente, se ubican tres manchas cuya forma varía dependiendo del ejemplar. :3', 1, 6.90, 0.70, 0, 'Bulbasaur.webp'),
 (2, 'Charmander', 2, 1, 'Charmander es un pequeño lagarto bípedo. Sus características de fuego son resaltadas por su color de piel anaranjado y su cola con la punta envuelta en llamas', 3, 8.50, 0.60, 0, 'Charmander.webp'),
 (3, 'Squirtle', 3, 2, 'Squirtle es una de las especies más difíciles de encontrar. Habita tanto aguas dulces como marinas, preferiblemente zonas bastante profundas. Son pequeñas tortugas color celeste con caparazones color café, o rojas en algunos casos, con una cola enrollada que los distingue.', 2, 9.00, 0.50, 0, 'Squirtle.webp'),
 (4, 'Cacnea', 1, 1, 'Cacnea vive en los desiertos y otros lugares áridos donde nunca llueve. La flor sólo le brota una vez al año, y mientras más árido y hostil sea su hábitat, más bonita y aromática será la flor de Cacnea. Puede sobrevivir 30 días sin beber agua, gracias a la que tiene almacenada en su cuerpo.', 4, 51.30, 0.40, 0, 'Cacnea.png'),
@@ -84,7 +97,9 @@ INSERT INTO `pokemon` (`id_poke`, `npoke`, `id_tpoke`, `id_sexo`, `descripcion`,
 (13, 'Virizion', 1, 1, 'Virizion es un Pokémon legendario de tipo planta. Físicamente está basado en una gacela o antílope. Virizion es un Pokémon cuadrúpedo de color verde. Posee unos cuernos verdes terminados en extremos enrollados, aunque su cara, al igual que la parte inferior de su cuerpo es blanca. A ambos lados de su cuello presenta una hoja rosa. Sus patas parecen unas botas verdes terminadas en unas pezuñas negras. Cuenta la leyenda que Virizion confunde a sus rivales con rápidos movimientos para proteger a otros Pokémon.', 5, 200.00, 2.00, 1, 'Virizion.png'),
 (14, 'Moltres', 2, 2, 'Moltres es un enorme pájaro de color amarillento, con una cresta llameante en la cabeza y unas patas de color marrón rojizo. Sus alas y su cola están envueltas en llamas asemejándose mucho a un Fénix. También conocido como el legendario pájaro de fuego. Al aletear sus flamígeras alas, crea brillantes llamas que pueden hacer que una noche oscura se torne roja, una visión que es digna de verse. Se dice que este Pokémon lleva la primavera a las tierras invernales por donde pasa.', 3, 60.00, 2.00, 1, 'Moltres.png'),
 (15, 'Kyogre', 3, 1, 'Kyogre controla y domina todos los océanos y mares del mundo, pudiendo provocar potentes marejadas y maremotos con tan solo mover una aleta. Este Pokémon es casi imparable cuando se pone furioso ya que puede provocar un maremoto con olas tan altas como un edificio. Se cree que si lo quisiera, este Pokémon podría hacer que el planeta entero se inundara. Aún así, Kyogre es bastante pacífico, excepto cuando pelea con su gran enemigo, Groudon. Kyogre es capaz de crear potentes nubes cargadas de lluvia, cubrir el cielo y desatar lluvias torrenciales e inundaciones. Este Pokémon ha salvado de la sequía a mucha gente, gracias a su habilidad llovizna. También tiene la capacidad de levitar sobre lugares con agua abundante en las cercanías.', 2, 352.00, 4.50, 1, 'Kyogre.png'),
-(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png');
+(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png'),
+(29, 'Vaporeon', 3, 1, 'Es Vaporeon', 2, 2.00, 0.70, 0, 'Vaporeon.png'),
+(31, 'Alex', 4, 1, 'Ya valieron verga', 4, 1.00, 0.70, 1, 'gatoalex53 (1).png');
 
 -- --------------------------------------------------------
 
@@ -147,7 +162,37 @@ CREATE TABLE `tipopoke` (
 INSERT INTO `tipopoke` (`id_tpoke`, `ntpoke`, `id_habilidad`) VALUES
 (1, 'Planta', 3),
 (2, 'Fuego', 1),
-(3, 'Agua', 2);
+(3, 'Agua', 2),
+(4, 'Roca', 5),
+(5, 'Tierra', 5),
+(6, 'Acero', 8),
+(7, 'Bicho', 10),
+(8, 'Dragon', 11),
+(9, 'Electrico', 12),
+(10, 'Fantasma', 13),
+(11, 'Hada', 14),
+(12, 'Hielo', 15);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
+(1, 'Alex', 'alex@poke.com', 'poke123', 'editor');
 
 --
 -- Índices para tablas volcadas
@@ -188,6 +233,13 @@ ALTER TABLE `tipopoke`
   ADD KEY `id_habilidad` (`id_habilidad`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -195,13 +247,13 @@ ALTER TABLE `tipopoke`
 -- AUTO_INCREMENT de la tabla `habilidad`
 --
 ALTER TABLE `habilidad`
-  MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `region`
@@ -219,7 +271,13 @@ ALTER TABLE `sexo`
 -- AUTO_INCREMENT de la tabla `tipopoke`
 --
 ALTER TABLE `tipopoke`
-  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
