@@ -1,9 +1,15 @@
-<?php 
+<?php
 include 'conect.php';
-$Id = $_GET['id'];
-$Eliminar = "DELETE FROM pokemon WHERE id_poke = $Id";
-$EliminarE = $conexion->query($Eliminar);
-if($EliminarE > 0){
-    header("location: control.php");
-} 
+
+if (isset($_GET['id'])) {
+    $id = $conexion->real_escape_string($_GET['id']);
+    $EliminarE = $conexion->query("DELETE FROM pokemon WHERE id_poke = '$id'");
+
+    if ($EliminarE) {
+        header("Location: ../control.php?eliminacion=exitosa");
+    } else {
+        header("Location: ../control.php");
+    }
+    exit;
+}
 ?>

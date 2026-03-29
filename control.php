@@ -4,23 +4,17 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
     header('Location: index.php');
     exit;
 }
-?>
-<?php
+
 include 'include/conect.php';
 include 'include/querys.php';
-if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {
-    echo "<div class='container mt-3'>
-            <div class='alert alert-success alert-dismissible fade show' role='alert'>
-            <strong>Actualizacion exitosa.</strong> Se actualizaron los campos correctamente.
-            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-            </div>
-          </div>";
 
-    echo "<script>
-            if(window.history.replaceState){
-                window.history.replaceState(null, null, window.location.pathname);
-            }
-          </script>";
+// Guardar el mensaje en variable, no hacer echo todavía
+$Mensaje = "";
+if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {
+    $Mensaje = "actualizacion";
+}
+if (isset($_GET['eliminacion']) && $_GET['eliminacion'] == "exitosa") {
+    $Mensaje = "eliminacion";
 }
 ?>
 
@@ -35,7 +29,6 @@ if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {
         body {
             background-color: #fff9db;
         }
-
 
         .card {
             background-color: #fff3b0;
@@ -57,38 +50,58 @@ if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {
 </head>
 
 <body>
-    <!-- NAVBAR -->
-   <?php include 'vistas/sidebar.php';?>
-    <!--contenedor -->
+
+    <?php include 'vistas/sidebar.php'; ?>
+
     <div class="container">
         <h1 class="text-center mt-4">Consulta pokemon</h1>
+
+        <!-- Mensaje AQUÍ, después del navbar y dentro del container -->
+        <?php if ($Mensaje == "actualizacion"): ?>
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <strong>Actualización exitosa.</strong> Se actualizaron los campos correctamente.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php elseif ($Mensaje == "eliminacion"): ?>
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                <strong>Eliminado.</strong> El Pokémon fue eliminado correctamente.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
+        <!-- Limpiar el parámetro de la URL sin recargar -->
+        <?php if ($Mensaje): ?>
+            <script>
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.pathname);
+                }
+            </script>
+        <?php endif; ?>
+
         <div class="row mt-3">
-            <!-- Inicia  -->
             <table class="table">
                 <thead>
                     <tr>
-
-                        <th scope="col">Nombre pokemon</th>
-                        <th scope="col">Tipo poke</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Región</th>
-                        <th scope="col">Peso</th>
-                        <th scope="col">Altura</th>
-                        <th scope="col">Legendario</th>
-                        <th scope="col">Opcion</th>
+                        <th>Nombre pokemon</th>
+                        <th>Tipo poke</th>
+                        <th>Sexo</th>
+                        <th>Descripción</th>
+                        <th>Región</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Legendario</th>
+                        <th>Opcion</th>
                     </tr>
-
                 </thead>
                 <tbody>
-                    <?php
-                    if ($editaree->num_rows == 0) {
-                        echo "<tr><td colspan='10'>No hay datos</td></tr>";
-                    }
-                    ?>
-                    <?php while ($row = $editaree->fetch_assoc()) { ?>
+                    <?php if ($editaree->num_rows == 0): ?>
                         <tr>
+                            <td colspan="9">No hay datos</td>
+                        </tr>
+                    <?php endif; ?>
 
+                    <?php while ($row = $editaree->fetch_assoc()): ?>
+                        <tr>
                             <td><?php echo $row['npoke'] ?></td>
                             <td><?php echo $row['id_tpoke'] ?></td>
                             <td><?php echo $row['id_sexo'] ?></td>
@@ -98,19 +111,20 @@ if (isset($_GET['actualizacion']) && $_GET['actualizacion'] == "exitosa") {
                             <td><?php echo $row['altura'] ?></td>
                             <td><?php echo $row['legendario'] ?></td>
                             <td>
-                                <a href="editar.php?id_poke=<?php echo $row['id_poke']; ?>" class="btn btn-warning">
-                                    Editar
+                                <a href="editar.php?id_poke=<?php echo $row['id_poke']; ?>" class="btn btn-warning btn-sm"
+                                    style="width: 65px; font-size: 0.875rem;">Editar</a>
+                                <a href="include/Eliminar.php?id=<?php echo $row['id_poke']; ?>"
+                                    class="btn btn-danger btn-sm" style="width: 65px; font-size: 0.875rem;">
+                                    Eliminar
                                 </a>
-                                <a class="btn btn-danger btn-sm"
-                                    href="include/Eliminar.php?id=<?php echo $row['id_poke']; ?>">Eliminar</a>
                             </td>
                         </tr>
-                    <?php } ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
-            <!-- Termina-->
         </div>
     </div>
+
     <script src="assets/js/bootstrap.min.js"></script>
 </body>
 
