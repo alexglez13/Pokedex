@@ -1,3 +1,50 @@
+/* ── Body con fondo ──────────────────────── */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+        url('../img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp')
+        no-repeat center center/cover;
+    min-height: 100vh;
+    color: white;
+}
+
+/* ── Contenido centrado ──────────────────── */
+.contenido {
+    min-height: calc(100vh - 60px);
+    padding: 20px 0;
+}
+
+/* ── Imagen hero ─────────────────────────── */
+.pokemon-hero {
+    width: auto;
+    max-height: 60vh;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+@media (max-width: 992px) {
+    .pokemon-hero {
+        max-height: 45vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .pokemon-hero {
+        max-height: 32vh;
+    }
+}
+
+/* ── Botón personalizado ─────────────────── */
+.btn-custom {
+    padding: 10px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    transform: scale(1.1);
+}
+
 .bg-pokedex{
 background-image: url('../img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp');
 background-size: cover;
