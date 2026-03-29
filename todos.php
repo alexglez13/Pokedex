@@ -43,7 +43,7 @@ $resultado = $conexion->query($consulta);
 
 <body class="bg-pokedex">
     <!-- NAVBAR -->
-    <?php include 'vistas/sidebar.php';?>
+    <?php include 'vistas/sidebar.php'; ?>
     <!--  -->
     <div class="container mt-5">
         <h1 class="text-center text-light mb-5">Todos los Pokémon</h1>
