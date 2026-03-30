@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2026 a las 15:24:42
+-- Tiempo de generación: 30-03-2026 a las 22:46:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -97,9 +97,7 @@ INSERT INTO `pokemon` (`id_poke`, `npoke`, `id_tpoke`, `id_sexo`, `descripcion`,
 (13, 'Virizion', 1, 1, 'Virizion es un Pokémon legendario de tipo planta. Físicamente está basado en una gacela o antílope. Virizion es un Pokémon cuadrúpedo de color verde. Posee unos cuernos verdes terminados en extremos enrollados, aunque su cara, al igual que la parte inferior de su cuerpo es blanca. A ambos lados de su cuello presenta una hoja rosa. Sus patas parecen unas botas verdes terminadas en unas pezuñas negras. Cuenta la leyenda que Virizion confunde a sus rivales con rápidos movimientos para proteger a otros Pokémon.', 5, 200.00, 2.00, 1, 'Virizion.png'),
 (14, 'Moltres', 2, 2, 'Moltres es un enorme pájaro de color amarillento, con una cresta llameante en la cabeza y unas patas de color marrón rojizo. Sus alas y su cola están envueltas en llamas asemejándose mucho a un Fénix. También conocido como el legendario pájaro de fuego. Al aletear sus flamígeras alas, crea brillantes llamas que pueden hacer que una noche oscura se torne roja, una visión que es digna de verse. Se dice que este Pokémon lleva la primavera a las tierras invernales por donde pasa.', 3, 60.00, 2.00, 1, 'Moltres.png'),
 (15, 'Kyogre', 3, 1, 'Kyogre controla y domina todos los océanos y mares del mundo, pudiendo provocar potentes marejadas y maremotos con tan solo mover una aleta. Este Pokémon es casi imparable cuando se pone furioso ya que puede provocar un maremoto con olas tan altas como un edificio. Se cree que si lo quisiera, este Pokémon podría hacer que el planeta entero se inundara. Aún así, Kyogre es bastante pacífico, excepto cuando pelea con su gran enemigo, Groudon. Kyogre es capaz de crear potentes nubes cargadas de lluvia, cubrir el cielo y desatar lluvias torrenciales e inundaciones. Este Pokémon ha salvado de la sequía a mucha gente, gracias a su habilidad llovizna. También tiene la capacidad de levitar sobre lugares con agua abundante en las cercanías.', 2, 352.00, 4.50, 1, 'Kyogre.png'),
-(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png'),
-(29, 'Vaporeon', 3, 1, 'Es Vaporeon', 2, 2.00, 0.70, 0, 'Vaporeon.png'),
-(31, 'Alex', 4, 1, 'Ya valieron verga', 4, 1.00, 0.70, 1, 'gatoalex53 (1).png');
+(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png');
 
 -- --------------------------------------------------------
 
@@ -171,7 +169,8 @@ INSERT INTO `tipopoke` (`id_tpoke`, `ntpoke`, `id_habilidad`) VALUES
 (9, 'Electrico', 12),
 (10, 'Fantasma', 13),
 (11, 'Hada', 14),
-(12, 'Hielo', 15);
+(12, 'Hielo', 15),
+(13, 'carton', 20);
 
 -- --------------------------------------------------------
 
@@ -182,6 +181,8 @@ INSERT INTO `tipopoke` (`id_tpoke`, `ntpoke`, `id_habilidad`) VALUES
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `ApellidoP` varchar(50) NOT NULL,
+  `ApellidoM` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante'
@@ -191,8 +192,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
-(1, 'Alex', 'alex@poke.com', 'poke123', 'editor');
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `ApellidoP`, `ApellidoM`, `email`, `password`, `rol`) VALUES
+(1, 'Alexis', 'Gonzalez', 'Velazquez', 'alex@pokedex.com', 'poke123', 'editor'),
+(2, 'Edson', 'Quintana', 'Ibañez', 'edson@pokedex.com', 'poke123', 'editor'),
+(3, 'Liliana', 'Prospero', 'Rivas', 'lili@pokedex.com', 'poke123', 'editor');
 
 --
 -- Índices para tablas volcadas
@@ -253,7 +256,7 @@ ALTER TABLE `habilidad`
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `region`
@@ -271,13 +274,13 @@ ALTER TABLE `sexo`
 -- AUTO_INCREMENT de la tabla `tipopoke`
 --
 ALTER TABLE `tipopoke`
-  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
