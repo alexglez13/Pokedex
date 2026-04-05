@@ -185,7 +185,8 @@ CREATE TABLE `usuarios` (
   `ApellidoM` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante'
+  `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante',
+  `id_poke_companero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -240,7 +241,8 @@ ALTER TABLE `tipopoke`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `id_poke_companero` (`id_poke_companero`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -299,6 +301,12 @@ ALTER TABLE `pokemon`
 --
 ALTER TABLE `tipopoke`
   ADD CONSTRAINT `tipopoke_ibfk_1` FOREIGN KEY (`id_habilidad`) REFERENCES `habilidad` (`id_habilidad`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_companero` FOREIGN KEY (`id_poke_companero`) REFERENCES `pokemon` (`id_poke`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
