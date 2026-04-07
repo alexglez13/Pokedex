@@ -1,4 +1,3 @@
-php
 <?php
 session_start();
 require 'include/conect.php';
@@ -14,7 +13,6 @@ if (isset($_POST['BtnLogin'])) {
 
     if ($result->num_rows == 1) {
         $usuario = $result->fetch_assoc();
-        // Guardar datos en sesión
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         $_SESSION['nombre'] = $usuario['nombre'];
         $_SESSION['rol'] = $usuario['rol'];
@@ -29,7 +27,6 @@ if (isset($_POST['BtnLogin'])) {
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Login - POKEDEX</title>
@@ -38,7 +35,8 @@ if (isset($_POST['BtnLogin'])) {
         body {
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
                 url('assets/img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp') no-repeat center center/cover;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
         }
 
         .card {
@@ -48,33 +46,37 @@ if (isset($_POST['BtnLogin'])) {
     </style>
 </head>
 
-<body class="d-flex justify-content-center align-items-center">
-    <div class="card p-4" style="width: 380px;">
-        <div class="text-center mb-3">
-            <h3 class="fw-bold">🔐 Iniciar Sesión</h3>
-            <p class="text-muted">Accede a tu cuenta Pokédex</p>
+<body>
+
+    <?php include 'vistas/sidebar.php'; ?>
+
+    <div class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 56px);">
+        <div class="card p-4" style="width: 380px;">
+            <div class="text-center mb-3">
+                <h3 class="fw-bold">🔐 Iniciar Sesión</h3>
+                <p class="text-muted">Accede a tu cuenta Pokédex</p>
+            </div>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" placeholder="trainer@pokedex.com" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" name="BtnLogin" class="btn btn-danger w-100 fw-bold">
+                    Entrar
+                </button>
+            </form>
         </div>
-
-        <?php if ($error): ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
-        <?php endif; ?>
-
-        <form method="post">
-            <div class="mb-3">
-                <label class="form-label">Correo electrónico</label>
-                <input type="email" name="email" class="form-control" placeholder="trainer@pokedex.com" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Contraseña</label>
-                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
-            </div>
-            <button type="submit" name="BtnLogin" class="btn btn-danger w-100 fw-bold">
-                Entrar
-            </button>
-        </form>
     </div>
 
     <script src="assets/js/bootstrap.min.js"></script>
 </body>
-
 </html>
