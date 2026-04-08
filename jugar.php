@@ -70,6 +70,9 @@ while ($row = $resultado->fetch_assoc()) {
                         case "Planta":
                             $colorTipo = "bg-success";
                             break;
+                            case "Electrico":
+                            $colorTipo = "bg-warning";
+                            break;
                         default:
                             $colorTipo = "bg-secondary";
                     }
@@ -82,6 +85,9 @@ while ($row = $resultado->fetch_assoc()) {
                             break;
                         case "Planta":
                             $fondoTipo = "shadow bg-light border-5 border-success text-dark";
+                            break;
+                            case "Electrico":
+                            $fondoTipo = "shadow bg-light border-5 border-warning text-dark";
                             break;
                         default:
                             $fondoTipo = "bg-light border-5 border-secondary text-dark";
@@ -145,7 +151,7 @@ while ($row = $resultado->fetch_assoc()) {
             <div class="modal-content">
 
                 <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">¡Batalla Pokémon! — El mejor de 3 rondas gana</h5>
+                    <h5 class="modal-title">¡Batalla Pokémon!</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -207,8 +213,8 @@ while ($row = $resultado->fetch_assoc()) {
                         🎲 ¡Tirar Dado!
                     </button>
                     <button id="btnReintentar" class="btn btn-secondary btn-lg px-4 d-none"
-                        onclick="reiniciarBatalla()">
-                        🔄 Volver a elegir
+                        data-bs-dismiss="modal">
+                        Volver a elegir
                     </button>
                 </div>
 

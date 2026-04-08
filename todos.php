@@ -85,6 +85,9 @@ $resultado = $conexion->query($consulta);
                     case "Planta":
                         $colorTipo = "bg-success";
                         break;
+                        case "Electrico":
+                        $colorTipo = "bg-warning";
+                        break;
                     default:
                         $colorTipo = "bg-secondary";
                 }
@@ -101,6 +104,9 @@ $resultado = $conexion->query($consulta);
                         break;
                     case "Planta":
                         $fondoTipo = "shadow bg-light border-5 border-success text-dark";
+                        break;
+                        case "Electrico":
+                        $fondoTipo = "shadow bg-light border-5 border-warning text-dark";
                         break;
                     default:
                         $fondoTipo = "bg-light border-5 border-secondary text-dark";

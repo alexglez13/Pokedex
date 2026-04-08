@@ -92,7 +92,7 @@ if (isset($_POST['BtnLogin'])) {
       </div> 
     
                 <div class="mb-3">
-                    <label class="form-label">Crea un electrónico</label>
+                    <label class="form-label">Crea un correo electronico</label>
                     <input type="email" name="email" class="form-control" placeholder="trainer@pokedex.com" required>
                 </div>
                 <div class="mb-3">

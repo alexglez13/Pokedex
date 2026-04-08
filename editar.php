@@ -1,10 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
+if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'] !== 'editor')) {
     header('Location: index.php');
     exit;
 }
-
+?>
+<?php
 require 'include/conect.php';
 
 $Mensaje = '';

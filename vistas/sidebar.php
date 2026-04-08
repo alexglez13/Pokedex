@@ -3,8 +3,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-         <a href="javascript:history.back()" class="btn btn-outline-light btn-sm">
-← </a>
         <a class="navbar-brand fw-bold" href="index.php">POKEDEX</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +15,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Inicio</a>
                 </li>
-
+                <!-- <li class="nav-item">
+                        <a class="nav-link" href="jugar.php">Jugar</a>
+                    </li> -->
+                    
                 <?php if (isset($_SESSION['rol'])): ?>
                     <!-- Solo con sesión -->
                     <li class="nav-item">
@@ -25,10 +26,23 @@
                     </li>
                 <?php endif; ?>
 
+                <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                    <!-- Solo visible para el admin -->
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="prueba.php">Registrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="control.php">Control Pokemon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" href="control_usuarios.php">Control Usuarios</a>
+                    </li>
+                <?php endif; ?>
+
                 <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'editor'): ?>
                     <!-- Solo visible para editores -->
                     <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="registar.php">Registrar</a>
+                        <a class="nav-link text-warning fw-bold" href="prueba.php">Registrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-warning fw-bold" href="control.php">Control</a>
@@ -37,6 +51,14 @@
 
 
                 <?php if (isset($_SESSION['id_usuario'])): ?>
+
+                    <?php if ($_SESSION['rol'] === 'admin'): ?>
+        <li class="nav-item ms-2">
+            <a class="nav-link" href="perfil.php?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">
+                 Administrador <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+            </a>
+        </li>
+    <?php endif; ?>
 
     <?php if ($_SESSION['rol'] === 'editor'): ?>
         <li class="nav-item ms-2">
@@ -48,7 +70,7 @@
 
     <?php if ($_SESSION['rol'] === 'visitante'): ?>
         <li class="nav-item ms-2">
-            <a class="nav-link" href="puntuacion.php?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">
+            <a class="nav-link" href="perfil.php?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">
                  Visitante <?php echo htmlspecialchars($_SESSION['nombre']); ?>
             </a>
         </li>
