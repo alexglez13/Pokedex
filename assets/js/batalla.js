@@ -146,3 +146,11 @@
         document.getElementById('btnTirar').classList.add('d-none');
         document.getElementById('btnReintentar').classList.remove('d-none');
     }
+
+     fetch("guardar_partida.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "ganadas=" + puntosJugador + "&perdidas=" + puntosCPU
+});
