@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 session_start();
 include 'include/conect.php';
 
@@ -28,4 +28,4 @@ if ($stmt->execute()) {
 }
 
 $stmt->close();
-?> -->
+?>
