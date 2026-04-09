@@ -1,0 +1,198 @@
+/* ── Body con fondo ──────────────────────── */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+        url('../img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp') no-repeat center center/cover;
+    min-height: 100vh;
+    color: white;
+}
+
+/* ── Contenido centrado ──────────────────── */
+.contenido {
+    min-height: calc(100vh - 60px);
+    padding: 20px 0;
+}
+
+/* ── Imagen hero ─────────────────────────── */
+.pokemon-hero {
+    width: auto;
+    max-height: 60vh;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+@media (max-width: 992px) {
+    .pokemon-hero {
+        max-height: 45vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .pokemon-hero {
+        max-height: 32vh;
+    }
+}
+
+/* ── Botón personalizado ─────────────────── */
+.btn-custom {
+    padding: 10px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    transform: scale(1.1);
+}
+
+.bg-pokedex {
+    background-image: url('../img/made-this-pokeball-wallpaper-for-fun-2560-x-1440-will-take-v0-f2Dek-N2L1qqxugRbpozk_SapDPku3Aa8FLHu9c_VBA.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Flechas del carrusel */
+#carouselPokemon {
+    padding: 0 60px;
+}
+
+#carouselPokemon .carousel-control-prev,
+#carouselPokemon .carousel-control-next {
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#carouselPokemon .carousel-control-prev {
+    left: 0;
+}
+
+#carouselPokemon .carousel-control-next {
+    right: 0;
+}
+
+/* Tarjeta clickeable */
+.card-hover {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.card-hover:active {
+    transform: scale(0.97);
+}
+
+/* Dado animado */
+.dado {
+    font-size: 4rem;
+    display: inline-block;
+}
+
+.dado.rolling {
+    animation: roll 0.6s ease-in-out;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(90deg) scale(1.2);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(0.9);
+    }
+
+    75% {
+        transform: rotate(270deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Resultado de ronda */
+.ronda-resultado {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.ronda-win {
+    background: #d4edda;
+    color: #155724;
+}
+
+.ronda-lose {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.ronda-draw {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Banner ganador */
+#resultadoFinal {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.resultado-victoria {
+    background: #d4edda;
+    color: #155724;
+}
+
+.resultado-derrota {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.resultado-empate {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Sprites en el modal de batalla */
+.sprite-batalla {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.vs-text {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #dc3545;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.bg-rosa {
+    background-color: #ff698a !important; /* rosa */
+    color: white; /* opcional */
+}
