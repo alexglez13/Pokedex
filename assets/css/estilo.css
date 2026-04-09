@@ -191,4 +191,11 @@ body {
     font-weight: 900;
     color: #dc3545;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+<<<<<<< HEAD
+=======
+}
+.bg-rosa {
+    background-color: #ff698a !important; /* rosa */
+    color: white; /* opcional */
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 }

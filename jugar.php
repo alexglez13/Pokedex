@@ -70,6 +70,12 @@ while ($row = $resultado->fetch_assoc()) {
                         case "Planta":
                             $colorTipo = "bg-success";
                             break;
+<<<<<<< HEAD
+=======
+                            case "Electrico":
+                            $colorTipo = "bg-warning";
+                            break;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                         default:
                             $colorTipo = "bg-secondary";
                     }
@@ -83,6 +89,12 @@ while ($row = $resultado->fetch_assoc()) {
                         case "Planta":
                             $fondoTipo = "shadow bg-light border-5 border-success text-dark";
                             break;
+<<<<<<< HEAD
+=======
+                            case "Electrico":
+                            $fondoTipo = "shadow bg-light border-5 border-warning text-dark";
+                            break;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                         default:
                             $fondoTipo = "bg-light border-5 border-secondary text-dark";
                     }
@@ -145,7 +157,11 @@ while ($row = $resultado->fetch_assoc()) {
             <div class="modal-content">
 
                 <div class="modal-header bg-danger text-white">
+<<<<<<< HEAD
                     <h5 class="modal-title">¡Batalla Pokémon! — El mejor de 3 rondas gana</h5>
+=======
+                    <h5 class="modal-title">¡Batalla Pokémon!</h5>
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -207,8 +223,13 @@ while ($row = $resultado->fetch_assoc()) {
                         🎲 ¡Tirar Dado!
                     </button>
                     <button id="btnReintentar" class="btn btn-secondary btn-lg px-4 d-none"
+<<<<<<< HEAD
                         onclick="reiniciarBatalla()">
                         🔄 Volver a elegir
+=======
+                        data-bs-dismiss="modal">
+                        Volver a elegir
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                     </button>
                 </div>
 

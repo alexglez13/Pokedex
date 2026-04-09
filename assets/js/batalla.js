@@ -1,4 +1,8 @@
+<<<<<<< HEAD
     const carasDado = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+=======
+const carasDado = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
     // Estado de la batalla
     let pokemonJugador = null;
@@ -6,7 +10,11 @@
     let rondaActual    = 0;
     let puntosJugador  = 0;
     let puntosCPU      = 0;
+<<<<<<< HEAD
     const MAX_RONDAS   = 3;
+=======
+    const MAX_RONDAS   = 1;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
     // ─── Selección del jugador ───────────────────────────────────────
     function seleccionarPokemon(id, nombre, imagen, tipo, region, legendario) {
@@ -122,7 +130,11 @@
                     `🎲 Ronda ${rondaActual + 1} de ${MAX_RONDAS}`;
             }
 
+<<<<<<< HEAD
         }, 700); // duración de la animación
+=======
+        }, 700);
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
     }
 
     // ─── Resultado final ─────────────────────────────────────────────
@@ -145,4 +157,22 @@
         divFinal.textContent = mensaje;
         document.getElementById('btnTirar').classList.add('d-none');
         document.getElementById('btnReintentar').classList.remove('d-none');
+<<<<<<< HEAD
+=======
+
+        // ─── Guardar partida en BD ────────────────────────────────────
+        fetch('guardar_partida.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                rondas_ganadas:  puntosJugador,
+                rondas_perdidas: puntosCPU
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!data.ok) console.error('Error al guardar partida:', data.error);
+        })
+        .catch(err => console.error('Fetch error:', err));
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
     }

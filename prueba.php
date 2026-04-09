@@ -1,6 +1,10 @@
 <?php
 session_start();
+<<<<<<< HEAD
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
+=======
+if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'] !== 'editor')) {
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
     header('Location: index.php');
     exit;
 }

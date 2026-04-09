@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
 -- Tiempo de generación: 30-03-2026 a las 22:46:38
+=======
+-- Tiempo de generación: 08-04-2026 a las 11:09:06
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,7 +60,27 @@ INSERT INTO `habilidad` (`id_habilidad`, `nhabilidad`) VALUES
 (17, 'Agarre'),
 (18, 'Hipnosis'),
 (19, 'Avalancha'),
+<<<<<<< HEAD
 (20, 'Gancho de Julio Cesar Chavez');
+=======
+(20, 'Gancho de Julio Cesar Chavez'),
+(21, 'Golpe Karate'),
+(22, 'Bofetada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `partidas`
+--
+
+CREATE TABLE `partidas` (
+  `id_partida` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `rondas_ganadas` int(11) DEFAULT NULL,
+  `rondas_perdidas` int(11) DEFAULT NULL,
+  `fecha` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 -- --------------------------------------------------------
 
@@ -97,7 +121,8 @@ INSERT INTO `pokemon` (`id_poke`, `npoke`, `id_tpoke`, `id_sexo`, `descripcion`,
 (13, 'Virizion', 1, 1, 'Virizion es un Pokémon legendario de tipo planta. Físicamente está basado en una gacela o antílope. Virizion es un Pokémon cuadrúpedo de color verde. Posee unos cuernos verdes terminados en extremos enrollados, aunque su cara, al igual que la parte inferior de su cuerpo es blanca. A ambos lados de su cuello presenta una hoja rosa. Sus patas parecen unas botas verdes terminadas en unas pezuñas negras. Cuenta la leyenda que Virizion confunde a sus rivales con rápidos movimientos para proteger a otros Pokémon.', 5, 200.00, 2.00, 1, 'Virizion.png'),
 (14, 'Moltres', 2, 2, 'Moltres es un enorme pájaro de color amarillento, con una cresta llameante en la cabeza y unas patas de color marrón rojizo. Sus alas y su cola están envueltas en llamas asemejándose mucho a un Fénix. También conocido como el legendario pájaro de fuego. Al aletear sus flamígeras alas, crea brillantes llamas que pueden hacer que una noche oscura se torne roja, una visión que es digna de verse. Se dice que este Pokémon lleva la primavera a las tierras invernales por donde pasa.', 3, 60.00, 2.00, 1, 'Moltres.png'),
 (15, 'Kyogre', 3, 1, 'Kyogre controla y domina todos los océanos y mares del mundo, pudiendo provocar potentes marejadas y maremotos con tan solo mover una aleta. Este Pokémon es casi imparable cuando se pone furioso ya que puede provocar un maremoto con olas tan altas como un edificio. Se cree que si lo quisiera, este Pokémon podría hacer que el planeta entero se inundara. Aún así, Kyogre es bastante pacífico, excepto cuando pelea con su gran enemigo, Groudon. Kyogre es capaz de crear potentes nubes cargadas de lluvia, cubrir el cielo y desatar lluvias torrenciales e inundaciones. Este Pokémon ha salvado de la sequía a mucha gente, gracias a su habilidad llovizna. También tiene la capacidad de levitar sobre lugares con agua abundante en las cercanías.', 2, 352.00, 4.50, 1, 'Kyogre.png'),
-(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png');
+(26, 'Flareon', 2, 1, 'Es flareon', 3, 2.00, 0.50, 0, '136.png'),
+(37, 'Pikachu', 9, 1, 'pika', 1, 1.00, 0.50, 0, 'pikachu-transparent-32576.png');
 
 -- --------------------------------------------------------
 
@@ -170,7 +195,13 @@ INSERT INTO `tipopoke` (`id_tpoke`, `ntpoke`, `id_habilidad`) VALUES
 (10, 'Fantasma', 13),
 (11, 'Hada', 14),
 (12, 'Hielo', 15),
+<<<<<<< HEAD
 (13, 'carton', 20);
+=======
+(13, 'Carton', 20),
+(14, 'Normal', 22),
+(15, 'Lucha', 21);
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 -- --------------------------------------------------------
 
@@ -185,7 +216,11 @@ CREATE TABLE `usuarios` (
   `ApellidoM` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante',
+=======
+  `rol` enum('admin','editor','visitante') NOT NULL DEFAULT 'visitante',
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
   `id_poke_companero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -193,10 +228,18 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
+<<<<<<< HEAD
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `ApellidoP`, `ApellidoM`, `email`, `password`, `rol`) VALUES
 (1, 'Alexis', 'Gonzalez', 'Velazquez', 'alex@pokedex.com', 'poke123', 'editor'),
 (2, 'Edson', 'Quintana', 'Ibañez', 'edson@pokedex.com', 'poke123', 'editor'),
 (3, 'Liliana', 'Prospero', 'Rivas', 'lili@pokedex.com', 'poke123', 'editor');
+=======
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `ApellidoP`, `ApellidoM`, `email`, `password`, `rol`, `id_poke_companero`) VALUES
+(1, 'Alexis', 'Gonzalez', 'Velazquez', 'alex@pokedex.com', 'poke123', 'admin', 9),
+(2, 'Edson', 'Quintana', 'Ibañez', 'edson@pokedex.com', 'poke123', 'editor', 6),
+(3, 'Liliana', 'Prospero', 'Rivas', 'lili@pokedex.com', 'poke123', 'editor', 26),
+(4, 'German', 'Garmendia', 'Cruz', 'german@pokedex.com', 'poke123', 'visitante', 10);
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 --
 -- Índices para tablas volcadas
@@ -207,6 +250,12 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `ApellidoP`, `ApellidoM`, `email
 --
 ALTER TABLE `habilidad`
   ADD PRIMARY KEY (`id_habilidad`);
+
+--
+-- Indices de la tabla `partidas`
+--
+ALTER TABLE `partidas`
+  ADD PRIMARY KEY (`id_partida`);
 
 --
 -- Indices de la tabla `pokemon`
@@ -252,13 +301,27 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `habilidad`
 --
 ALTER TABLE `habilidad`
+<<<<<<< HEAD
   MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+=======
+  MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `partidas`
+--
+ALTER TABLE `partidas`
+  MODIFY `id_partida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 --
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
+<<<<<<< HEAD
   MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+=======
+  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 --
 -- AUTO_INCREMENT de la tabla `region`
@@ -276,13 +339,21 @@ ALTER TABLE `sexo`
 -- AUTO_INCREMENT de la tabla `tipopoke`
 --
 ALTER TABLE `tipopoke`
+<<<<<<< HEAD
   MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+=======
+  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
+<<<<<<< HEAD
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
 --
 -- Restricciones para tablas volcadas

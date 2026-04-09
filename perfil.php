@@ -30,7 +30,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardar_companero']))
         exit;
     }
 }
+<<<<<<< HEAD
 
+=======
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resetear_partidas'])) {
+    $redirectId = isset($_GET['id_usuario']) ? (int) $_GET['id_usuario'] : 0;
+    if (isset($_SESSION['id_usuario']) && (int) $_SESSION['id_usuario'] === $redirectId && $redirectId > 0) {
+        $del = $conexion->prepare('DELETE FROM partidas WHERE id_usuario = ?');
+        $del->bind_param('i', $redirectId);
+        $del->execute();
+        $del->close();
+        header('Location: perfil.php?id_usuario=' . $redirectId);
+        exit;
+    }
+}
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 $perfil = null;
 $error = null;
 $listaPokemon = [];
@@ -53,6 +67,26 @@ if (isset($_GET['id_usuario'])) {
         if (!$perfil) {
             $error = 'No se encontró un usuario con ese ID.';
         }
+<<<<<<< HEAD
+=======
+        // Totales de partidas del usuario
+$totalGanadas  = 0;
+$totalPerdidas = 0;
+if ($perfil) {
+    $stmtP = $conexion->prepare(
+        "SELECT 
+            COALESCE(SUM(rondas_ganadas), 0)  AS total_ganadas,
+            COALESCE(SUM(rondas_perdidas), 0) AS total_perdidas
+         FROM partidas WHERE id_usuario = ?"
+    );
+    $stmtP->bind_param('i', $Id);
+    $stmtP->execute();
+    $resP = $stmtP->get_result()->fetch_assoc();
+    $stmtP->close();
+    $totalGanadas  = (int) $resP['total_ganadas'];
+    $totalPerdidas = (int) $resP['total_perdidas'];
+}
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
     } else {
         $error = 'ID de usuario no válido.';
     }
@@ -215,10 +249,17 @@ if ($perfil && isset($_SESSION['id_usuario']) && (int) $_SESSION['id_usuario'] =
                             <?php endif; ?>
 
                             <dl class="mb-0 perfil-datos mx-auto">
+<<<<<<< HEAD
                                 <div class="perfil-fila">
                                     <dt class="text-white-50 perfil-etiqueta">ID</dt>
                                     <dd class="perfil-valor"><?php echo (int) $perfil['id_usuario']; ?></dd>
                                 </div>
+=======
+                                <!-- <div class="perfil-fila">
+                                    <dt class="text-white-50 perfil-etiqueta">ID</dt>
+                                    <dd class="perfil-valor"><?php echo (int) $perfil['id_usuario']; ?></dd>
+                                </div> -->
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 
                                 <div class="perfil-fila">
                                     <dt class="text-white-50 perfil-etiqueta">Nombre</dt>
@@ -245,6 +286,36 @@ if ($perfil && isset($_SESSION['id_usuario']) && (int) $_SESSION['id_usuario'] =
                                         <?php endif; ?>
                                     </dd>
                                 </div>
+<<<<<<< HEAD
+=======
+                                <div class="perfil-fila">
+    <dt class="text-white-50 perfil-etiqueta">Rondas&nbsp;Ganadas</dt>
+    <dd class="perfil-valor">
+        <span class="text-success fw-bold"><?php echo $totalGanadas; ?></span>
+    </dd>
+</div>
+
+<div class="perfil-fila">
+    <dt class="text-white-50 perfil-etiqueta">Rondas&nbsp;Perdidas</dt>
+    <dd class="perfil-valor">
+        <span class="text-danger fw-bold"><?php echo $totalPerdidas; ?></span>
+    </dd>
+</div>
+<?php if ($sesionActivaParaPerfil): ?>
+<div class="perfil-fila">
+    <dt class="text-white-50 perfil-etiqueta"></dt>
+    <dd class="perfil-valor">
+        <form method="post" action="perfil.php?id_usuario=<?php echo (int) $perfil['id_usuario']; ?>"
+              onsubmit="return confirm('¿Seguro que quieres reiniciar tus partidas?')">
+            <button type="submit" name="resetear_partidas" value="1"
+                    class="btn btn-danger btn-sm mt-1">
+                Reiniciar
+            </button>
+        </form>
+    </dd>
+</div>
+<?php endif; ?>
+>>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                             </dl>
                         </div>
                     </div>
