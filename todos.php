@@ -43,7 +43,7 @@ $resultado = $conexion->query($consulta);
 
 <body class="bg-pokedex">
     <!-- NAVBAR -->
-    <?php include 'vistas/sidebar.php';?>
+    <?php include 'vistas/sidebar.php'; ?>
     <!--  -->
     <div class="container mt-5">
         <h1 class="text-center text-light mb-5">Todos los Pokémon</h1>
@@ -103,7 +103,7 @@ $resultado = $conexion->query($consulta);
                         $fondoTipo = "shadow bg-light border-5 border-success text-dark";
                         break;
                     default:
-                        $fondoTipo = "bg-light border-5 border-primary text-dark";
+                        $fondoTipo = "bg-light border-5 border-secondary text-dark";
                 }
                 ?>
                 <div class="col-12 col-md-6 col-lg-4">

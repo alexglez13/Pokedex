@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2026 a las 18:13:22
+-- Tiempo de generación: 30-03-2026 a las 22:46:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,7 +43,20 @@ INSERT INTO `habilidad` (`id_habilidad`, `nhabilidad`) VALUES
 (4, 'Surf'),
 (5, 'Erupcion'),
 (6, 'Hojas navaja'),
-(7, 'Cascada');
+(7, 'Cascada'),
+(8, 'Garra Metal'),
+(9, 'Buceo'),
+(10, 'Picadura'),
+(11, 'Danza Dragon'),
+(12, 'Alto Voltaje'),
+(13, 'Maldicion'),
+(14, 'Encanto'),
+(15, 'Colmillo Hielo'),
+(16, 'Demolicion'),
+(17, 'Agarre'),
+(18, 'Hipnosis'),
+(19, 'Avalancha'),
+(20, 'Gancho de Julio Cesar Chavez');
 
 -- --------------------------------------------------------
 
@@ -69,7 +82,7 @@ CREATE TABLE `pokemon` (
 --
 
 INSERT INTO `pokemon` (`id_poke`, `npoke`, `id_tpoke`, `id_sexo`, `descripcion`, `id_region`, `peso`, `altura`, `legendario`, `imagen`) VALUES
-(1, 'Bulbasaur', 1, 1, 'Bulbasaur es un Pokémon cuadrúpedo de color verde cubierto de manchas geométricas de tonos oscuros. Su cabeza representa cerca de un tercio de su cuerpo. En su frente, se ubican tres manchas cuya forma varía dependiendo del ejemplar.', 1, 6.90, 0.70, 0, 'Bulbasaur.webp'),
+(1, 'Bulbasaur', 1, 1, 'Bulbasaur es un Pokémon cuadrúpedo de color verde cubierto de manchas geométricas de tonos oscuros. Su cabeza representa cerca de un tercio de su cuerpo. En su frente, se ubican tres manchas cuya forma varía dependiendo del ejemplar. :3', 1, 6.90, 0.70, 0, 'Bulbasaur.webp'),
 (2, 'Charmander', 2, 1, 'Charmander es un pequeño lagarto bípedo. Sus características de fuego son resaltadas por su color de piel anaranjado y su cola con la punta envuelta en llamas', 3, 8.50, 0.60, 0, 'Charmander.webp'),
 (3, 'Squirtle', 3, 2, 'Squirtle es una de las especies más difíciles de encontrar. Habita tanto aguas dulces como marinas, preferiblemente zonas bastante profundas. Son pequeñas tortugas color celeste con caparazones color café, o rojas en algunos casos, con una cola enrollada que los distingue.', 2, 9.00, 0.50, 0, 'Squirtle.webp'),
 (4, 'Cacnea', 1, 1, 'Cacnea vive en los desiertos y otros lugares áridos donde nunca llueve. La flor sólo le brota una vez al año, y mientras más árido y hostil sea su hábitat, más bonita y aromática será la flor de Cacnea. Puede sobrevivir 30 días sin beber agua, gracias a la que tiene almacenada en su cuerpo.', 4, 51.30, 0.40, 0, 'Cacnea.png'),
@@ -147,7 +160,43 @@ CREATE TABLE `tipopoke` (
 INSERT INTO `tipopoke` (`id_tpoke`, `ntpoke`, `id_habilidad`) VALUES
 (1, 'Planta', 3),
 (2, 'Fuego', 1),
-(3, 'Agua', 2);
+(3, 'Agua', 2),
+(4, 'Roca', 5),
+(5, 'Tierra', 5),
+(6, 'Acero', 8),
+(7, 'Bicho', 10),
+(8, 'Dragon', 11),
+(9, 'Electrico', 12),
+(10, 'Fantasma', 13),
+(11, 'Hada', 14),
+(12, 'Hielo', 15),
+(13, 'carton', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `ApellidoP` varchar(50) NOT NULL,
+  `ApellidoM` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` enum('editor','visitante') NOT NULL DEFAULT 'visitante',
+  `id_poke_companero` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `ApellidoP`, `ApellidoM`, `email`, `password`, `rol`) VALUES
+(1, 'Alexis', 'Gonzalez', 'Velazquez', 'alex@pokedex.com', 'poke123', 'editor'),
+(2, 'Edson', 'Quintana', 'Ibañez', 'edson@pokedex.com', 'poke123', 'editor'),
+(3, 'Liliana', 'Prospero', 'Rivas', 'lili@pokedex.com', 'poke123', 'editor');
 
 --
 -- Índices para tablas volcadas
@@ -188,6 +237,14 @@ ALTER TABLE `tipopoke`
   ADD KEY `id_habilidad` (`id_habilidad`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `id_poke_companero` (`id_poke_companero`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -195,13 +252,13 @@ ALTER TABLE `tipopoke`
 -- AUTO_INCREMENT de la tabla `habilidad`
 --
 ALTER TABLE `habilidad`
-  MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_habilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_poke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `region`
@@ -219,7 +276,13 @@ ALTER TABLE `sexo`
 -- AUTO_INCREMENT de la tabla `tipopoke`
 --
 ALTER TABLE `tipopoke`
-  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tpoke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -238,6 +301,12 @@ ALTER TABLE `pokemon`
 --
 ALTER TABLE `tipopoke`
   ADD CONSTRAINT `tipopoke_ibfk_1` FOREIGN KEY (`id_habilidad`) REFERENCES `habilidad` (`id_habilidad`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_companero` FOREIGN KEY (`id_poke_companero`) REFERENCES `pokemon` (`id_poke`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

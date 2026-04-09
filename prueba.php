@@ -1,41 +1,32 @@
 <?php
+session_start();
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
+    header('Location: index.php');
+    exit;
+}
+?>
+<?php
 
-// CONEXIÓN
 require 'include/conect.php';
 
-// MENSAJE
 $Mensaje = "";
-// BOTÓN
+
 if (isset($_POST['BtnRegistro'])) {
-    // IMAGEN
-    $nombreImagen = $_FILES['imagen']['name'];
-    $tempImagen = $_FILES['imagen']['tmp_name'];
-    $ruta = "assets/img/" . $nombreImagen;
 
-    // Mover imagen a carpeta
-    move_uploaded_file($tempImagen, $ruta);
-    // 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-
         $nombreImagen = $_FILES['imagen']['name'];
         $tempImagen = $_FILES['imagen']['tmp_name'];
-
-        // Validar tipo
         $tipo = $_FILES['imagen']['type'];
 
         if ($tipo == "image/jpeg" || $tipo == "image/png" || $tipo == "image/jpg") {
-
             $ruta = "assets/img/" . $nombreImagen;
             move_uploaded_file($tempImagen, $ruta);
-
         } else {
-            echo "Solo se permiten imágenes JPG o PNG";
+            $Mensaje .= "<div class='alert alert-danger'>Solo se permiten imágenes JPG o PNG</div>";
         }
     }
-    // 
 
-    $nombreImagen = $_FILES['imagen']['name'];
-    // RECIBIR DATOS
+    $nombreImagen = $conexion->real_escape_string($_FILES['imagen']['name']);
     $npoke = $conexion->real_escape_string($_POST['npoke']);
     $id_tpoke = $conexion->real_escape_string($_POST['id_tpoke']);
     $id_sexo = $conexion->real_escape_string($_POST['id_sexo']);
@@ -45,26 +36,25 @@ if (isset($_POST['BtnRegistro'])) {
     $altura = $conexion->real_escape_string($_POST['altura']);
     $legendario = $conexion->real_escape_string($_POST['legendario']);
 
-
-    // INSERT CORRECTO
     $registra = "INSERT INTO pokemon 
-(npoke,id_tpoke,id_sexo,descripcion,id_region,peso,altura,legendario,imagen)
-VALUES 
-('$npoke','$id_tpoke','$id_sexo','$descripcion','$id_region','$peso','$altura','$legendario','$nombreImagen')";
-
+        (npoke, id_tpoke, id_sexo, descripcion, id_region, peso, altura, legendario, imagen)
+        VALUES 
+        ('$npoke','$id_tpoke','$id_sexo','$descripcion','$id_region','$peso','$altura','$legendario','$nombreImagen')";
 
     $RegistroE = $conexion->query($registra);
-    // RESULTADO
+
     if ($RegistroE) {
         $Mensaje .= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-<strong>Registro Exitoso! </strong> Los datos estan en la base de manera correcta 
-<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-</div>";
-
+            <strong>Registro Exitoso!</strong> Los datos están en la base de manera correcta.
+            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+        </div>";
     }
-
 }
 
+// ── Consultas para los selects ────────────────────────────────────────
+$tipos = $conexion->query("SELECT id_tpoke, ntpoke FROM tipopoke ORDER BY ntpoke");
+$sexos = $conexion->query("SELECT id_sexo, nsexo FROM sexo ORDER BY nsexo");
+$regiones = $conexion->query("SELECT id_region, nregion FROM region ORDER BY nregion");
 ?>
 
 <!DOCTYPE html>
@@ -84,27 +74,21 @@ VALUES
             border-radius: 20px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
         }
-
-        .pokemon-img {
-            width: 100px;
-        }
     </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <?php include 'vistas/sidebar.php';?>
+
+    <?php include 'vistas/sidebar.php'; ?>
 
     <div class="container mt-5">
         <?php echo $Mensaje; ?>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <div class="card p-4">
 
                     <div class="text-center">
-
                         <h2 class="mt-2">Registro de Pokémon</h2>
                         <p>Ingresa los datos del Pokémon</p>
                     </div>
@@ -118,20 +102,27 @@ VALUES
                         </div>
 
                         <div class="row mt-3">
+                            <!-- Select TIPO desde BD -->
                             <div class="col">
                                 <select name="id_tpoke" class="form-select">
                                     <option value="">Tipo de Pokémon</option>
-                                    <option value="1">Planta</option>
-                                    <option value="2">Fuego</option>
-                                    <option value="3">Agua</option>
-                                    <option value="4">Roca</option>
+                                    <?php while ($t = $tipos->fetch_assoc()): ?>
+                                        <option value="<?php echo $t['id_tpoke']; ?>">
+                                            <?php echo $t['ntpoke']; ?>
+                                        </option>
+                                    <?php endwhile; ?>
                                 </select>
                             </div>
+
+                            <!-- Select SEXO desde BD -->
                             <div class="col">
                                 <select name="id_sexo" class="form-select">
                                     <option value="">Sexo</option>
-                                    <option value="1">Macho</option>
-                                    <option value="2">Hembra</option>
+                                    <?php while ($s = $sexos->fetch_assoc()): ?>
+                                        <option value="<?php echo $s['id_sexo']; ?>">
+                                            <?php echo $s['nsexo']; ?>
+                                        </option>
+                                    <?php endwhile; ?>
                                 </select>
                             </div>
                         </div>
@@ -142,28 +133,35 @@ VALUES
                             </div>
                         </div>
 
+                        <!-- Select REGIÓN desde BD -->
                         <div class="row mt-3">
                             <div class="col">
                                 <select name="id_region" class="form-select">
                                     <option value="">Región</option>
-                                    <option value="1">Bosque</option>
-                                    <option value="2">Playa</option>
-                                    <option value="3">Volcán</option>
-                                    <option value="4">Desierto</option>
-                                    <option value="5">Pradera</option>
-                                    <option value="6">Estanque</option>
+                                    <?php while ($r = $regiones->fetch_assoc()): ?>
+                                        <option value="<?php echo $r['id_region']; ?>">
+                                            <?php echo $r['nregion']; ?>
+                                        </option>
+                                    <?php endwhile; ?>
                                 </select>
                             </div>
                         </div>
 
-                        <input type="number" name="peso" placeholder="Peso (kg)" class="form-control" step="0.01"
-                            min="0">
-                        <input type="number" name="altura" placeholder="Altura (m)" class="form-control" step="0.01"
-                            min="0">
-
                         <div class="row mt-3">
                             <div class="col">
-                                <select name="legendario" class="form-control">
+                                <input type="number" name="peso" placeholder="Peso (kg)" class="form-control"
+                                    step="0.01" min="0">
+                            </div>
+                            <div class="col">
+                                <input type="number" name="altura" placeholder="Altura (m)" class="form-control"
+                                    step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <!-- Legendario sigue hardcodeado: solo hay 2 opciones fijas (Sí/No) -->
+                        <div class="row mt-3">
+                            <div class="col">
+                                <select name="legendario" class="form-select">
                                     <option value="">¿Es legendario?</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
@@ -177,21 +175,18 @@ VALUES
                             </div>
                         </div>
 
-                        <div class="row mt-2">
-                            <input type="submit" value="Registrar" name="BtnRegistro" class="btn btn-warning">
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input type="submit" value="Registrar" name="BtnRegistro" class="btn btn-warning w-100">
+                            </div>
                         </div>
 
+                    </form>
                 </div>
-
-                </form>
-
-
-
             </div>
-
         </div>
     </div>
-    </div>
+
     <script src="assets/js/bootstrap.min.js"></script>
 </body>
 
