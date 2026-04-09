@@ -122,7 +122,7 @@ $resultado = $conexion->query($consulta);
                         <img src="assets/img/<?php echo $row['imagen']; ?>" class="card-img-top mt-2 p-3"
                             style="height:350px; object-fit:contain;">
                         <div class="card-body">
-                            <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal"
+                            <button type="button" class="btn <?php echo $colorTipo; ?> text-light mt-2" data-bs-toggle="modal"
                                 data-bs-target="#modal<?php echo $row['id_poke']; ?>">
                                 Conoce Más
                             </button>

@@ -53,6 +53,8 @@ while ($row = $resultado->fetch_assoc()) {
         <p class="text-center text-warning mb-4">¡Haz clic en una tarjeta para iniciar la batalla!</p>
 
         <!-- CARRUSEL -->
+         <!-- Intervalo de tiempo -->
+         <!-- data-bs-interval="3000" -->
         <div id="carouselPokemon" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
