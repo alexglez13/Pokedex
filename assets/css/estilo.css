@@ -196,3 +196,15 @@ body {
     background-color: #ff698a !important; /* rosa */
     color: white; /* opcional */
 }
+.border-rosa {
+    border-color: #ff698a !important; /* rosa */
+    color: white; /* opcional */
+}
+.bg-cyan {
+    background-color: #07f1f5 !important; /* rosa */
+    color: white; /* opcional */
+}
+.border-cyan {
+    border-color: #07f1f5 !important; /* rosa */
+    color: white; /* opcional */
+}
