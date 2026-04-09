@@ -1,65 +1,5 @@
 <?php
 session_start();
-<<<<<<< HEAD
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'editor') {
-    header('Location: index.php');
-    exit;
-}
-
-require 'include/conect.php';
-
-$Mensaje = '';
-$row = null;
-$Id = isset($_GET['id_poke']) ? (int) $_GET['id_poke'] : 0;
-
-if ($Id > 0) {
-    $stmtLoad = $conexion->prepare('SELECT * FROM pokemon WHERE id_poke = ? LIMIT 1');
-    $stmtLoad->bind_param('i', $Id);
-    $stmtLoad->execute();
-    $row = $stmtLoad->get_result()->fetch_assoc();
-    $stmtLoad->close();
-}
-
-if (isset($_POST['BtnActualizar']) && $row) {
-    $identifica = (int) ($_POST['id_poke'] ?? 0);
-    if ($identifica !== (int) $row['id_poke']) {
-        $Mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-            <strong>Error de validación.</strong>
-            <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-        </div>";
-    } else {
-        $npoke = trim($_POST['npoke'] ?? '');
-        $id_tpoke = (int) ($_POST['id_tpoke'] ?? 0);
-        $id_sexo = (int) ($_POST['id_sexo'] ?? 0);
-        $descripcion = $_POST['descripcion'] ?? '';
-        $id_region = (int) ($_POST['id_region'] ?? 0);
-        $peso = (float) ($_POST['peso'] ?? 0);
-        $altura = (float) ($_POST['altura'] ?? 0);
-        $legendario = isset($_POST['legendario']) && $_POST['legendario'] !== '' ? (int) $_POST['legendario'] : null;
-
-        $nuevaImagen = null;
-        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-            $tipo = $_FILES['imagen']['type'];
-            if ($tipo === 'image/jpeg' || $tipo === 'image/png' || $tipo === 'image/jpg') {
-                $nombreImagen = basename($_FILES['imagen']['name']);
-                $ruta = 'assets/img/' . $nombreImagen;
-                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) {
-                    $nuevaImagen = $nombreImagen;
-                } else {
-                    $Mensaje .= "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                        No se pudo guardar la imagen. Se mantuvo la anterior.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                    </div>";
-                }
-            } else {
-                $Mensaje .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                    Solo se permiten imágenes JPG o PNG.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                </div>";
-            }
-        }
-
-=======
 if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'] !== 'editor')) {
     header('Location: index.php');
     exit;
@@ -119,7 +59,6 @@ if (isset($_POST['BtnActualizar']) && $row) {
             }
         }
 
->>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
         if ($npoke === '') {
             $Mensaje .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                 <strong>El nombre es obligatorio</strong>.

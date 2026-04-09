@@ -30,9 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardar_companero']))
         exit;
     }
 }
-<<<<<<< HEAD
-
-=======
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resetear_partidas'])) {
     $redirectId = isset($_GET['id_usuario']) ? (int) $_GET['id_usuario'] : 0;
     if (isset($_SESSION['id_usuario']) && (int) $_SESSION['id_usuario'] === $redirectId && $redirectId > 0) {
@@ -44,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resetear_partidas']))
         exit;
     }
 }
->>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
 $perfil = null;
 $error = null;
 $listaPokemon = [];
@@ -67,8 +63,6 @@ if (isset($_GET['id_usuario'])) {
         if (!$perfil) {
             $error = 'No se encontró un usuario con ese ID.';
         }
-<<<<<<< HEAD
-=======
         // Totales de partidas del usuario
 $totalGanadas  = 0;
 $totalPerdidas = 0;
@@ -86,7 +80,6 @@ if ($perfil) {
     $totalGanadas  = (int) $resP['total_ganadas'];
     $totalPerdidas = (int) $resP['total_perdidas'];
 }
->>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
     } else {
         $error = 'ID de usuario no válido.';
     }

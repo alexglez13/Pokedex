@@ -70,12 +70,9 @@ while ($row = $resultado->fetch_assoc()) {
                         case "Planta":
                             $colorTipo = "bg-success";
                             break;
-<<<<<<< HEAD
-=======
                             case "Electrico":
                             $colorTipo = "bg-warning";
                             break;
->>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                         default:
                             $colorTipo = "bg-secondary";
                     }
@@ -89,12 +86,9 @@ while ($row = $resultado->fetch_assoc()) {
                         case "Planta":
                             $fondoTipo = "shadow bg-light border-5 border-success text-dark";
                             break;
-<<<<<<< HEAD
-=======
                             case "Electrico":
                             $fondoTipo = "shadow bg-light border-5 border-warning text-dark";
                             break;
->>>>>>> 57d539dc7093b1a37f471e6124960133556029c7
                         default:
                             $fondoTipo = "bg-light border-5 border-secondary text-dark";
                     }
