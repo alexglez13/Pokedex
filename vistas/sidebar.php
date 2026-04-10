@@ -30,9 +30,8 @@
 
                 <?php if (isset($_SESSION['id_usuario'])): ?>
                     <!-- Sesión activa: mostrar nombre y botón cerrar sesión -->
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" href="perfil.php?id_usuario=<?php echo $_SESSION['id_usuario'] ?>">Bienvenido <?php echo htmlspecialchars($_SESSION['nombre']); ?></a>
-                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-text text-warning">Bienvenido <?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
                     <li class="nav-item">
                         <a class="btn btn-outline-danger btn-sm ms-1" href="logout.php">Salir</a>
                     </li>
